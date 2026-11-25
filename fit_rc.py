@@ -8,10 +8,10 @@ from scipy.stats import norm
 # ==========================================================
 # PARAMETRI CIRCUITO RC (Valori misurati con RLC meter)
 # ==========================================================
-R = 100.30       # Resistenza [Ohm]
-dR = 0.35        # Incertezza resistenza [Ohm]
-C = 219.0e-9     # Capacità [F] (219.0 nF)
-dC = 0.6e-9      # Incertezza capacità [F] (0.6 nF)
+R = 4665       # Resistenza [Ohm]
+dR = 12        # Incertezza resistenza [Ohm]
+C = 1.893e-9     # Capacità [F] (219.0 nF)
+dC = 0.006e-9      # Incertezza capacità [F] (0.6 nF)
 
 
 def getData(filepath):
@@ -87,31 +87,31 @@ if __name__ == "__main__":
     dtau = (tau**2) * dA
 
     # Valore atteso da R e C con propagazione degli errori
-    tau_att = R * C
-    dtau_att = np.sqrt((C * dR)**2 + (R * dC)**2)
+    tau_att = R * C * 1E+6
+    dtau_att = np.sqrt((C * dR)**2 + (R * dC)**2) * 1E+6
 
     print("=========================================")
     print(f"FIT LINEARE RC (Punti analizzati: {len(x)})")
     print("Equazione: y = ln(ΔV) = A*t + B")
-    print(f"A = {A:.4e} ± {dA:.4e} s^-1")
+    print(f"A = {A:.4e} ± {dA:.4e} us^-1")
     print(f"B = {B:.4f} ± {dB:.4f}")
     print("Matrice di covarianza (A, B):")
     print(f"  [[{cov_beta[0, 0]:.4e}, {cov_beta[0, 1]:.4e}],")
     print(f"   [{cov_beta[1, 0]:.4e}, {cov_beta[1, 1]:.4e}]]")
     print("=========================================")
     print("Parametri Fisici estratti:")
-    print(f"tau_fit = {tau:.4e} ± {dtau:.4e} s  ({tau*1e6:.2f} ± {dtau*1e6:.2f} us)")
+    print(f"tau_fit = ({tau:.4f} ± {dtau:.4f} us)")
     print(f"chi2 = {chi2:.3f}  gdl = {gdl}  chi2/gdl = {chi2 / gdl:.3f}")
 
     # Test di consistenza statistico tra tau_fit e R*C
-    test_consistenza(tau, dtau, tau_att, dtau_att, nome_param="tau", unita="s")
+    test_consistenza(tau, dtau, tau_att, dtau_att, nome_param="tau", unita="us")
 
     # ===== Finestra 1: Dati e retta di fit =====
     fig, ax = plt.subplots(figsize=(8, 6))
     ax.errorbar(
         x, y, xerr=dx, yerr=dy,
         fmt="o", color="blue", capsize=2, elinewidth=0.8, markersize=3,
-        label="Dati sperim. (scala log)"
+        label="Dati sperim. (scala semilog)"
     )
 
     margin = 0.05 * (x.max() - x.min()) if x.max() != x.min() else 1.0
@@ -120,9 +120,9 @@ if __name__ == "__main__":
         x_fit, retta(x_fit, beta), "r-", lw=1.2,
         label=(
             f"Fit Lineare ($At + B$)\n"
-            f"A = {A:.3e} ± {dA:.3e} s$^{{-1}}$\n"
+            f"A = {A:.3e} ± {dA:.3e} $\\mu$s$^{{-1}}$\n"
             f"B = {B:.3f} ± {dB:.3f}\n"
-            f"$\\tau$ = ({tau*1e6:.2f} ± {dtau*1e6:.2f}) $\\mu$s"
+            f"$\\tau$ = ({tau:.2f} ± {dtau:.2f}) $\\mu$s"
         )
     )
 
