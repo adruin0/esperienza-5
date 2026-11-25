@@ -98,8 +98,9 @@
 %\bigskip
 
 \section{Introduzione}
-L'obiettivo dell'esperienza è quello di andare a studiare il comportamento di questi due circuiti notevoli nel 
-momento in cui ricevono in ingresso un voltaggio impulsivo. Simuleremo allora attraverso un onda quadra un impulso periodico.
+L'obiettivo dell'esperienza è quello di andare a studiare il comportamento dei circuiti notevoli RC e RLC serie in regime impulsivo.
+
+
 \section{Apparato sperimentale}
 \begin{itemize}[leftmargin=2cm]
     \item Generatore arbitrario di funzioni.
@@ -126,10 +127,7 @@ momento in cui ricevono in ingresso un voltaggio impulsivo. Simuleremo allora at
 
 \section{Circuito RC}
 \subsection{Introduzione}
-Anche in questo caso la risoluzione analitica dell'equazione differenziale del circuito, con le adeguate condizioni iniziali, permette 
-di descriverlo completamente.
-
-Nel nostro caso otterremo una tensione ai capi del condensatore dipendente dalla funzione:
+Risolvendo analiticamente l'equazione differenziale del circuito RC serie a partire dalla legge di Kirchoff, con le adeguate condizioni iniziali, otterremo una tensione ai capi del condensatore descritta dalla funzione:
 
  
 \[V_c(t)=
@@ -140,13 +138,13 @@ Nel nostro caso otterremo una tensione ai capi del condensatore dipendente dalla
 \]
 
 Dove: \[ V^*= V_0 \frac{1-e^{-\frac{T}{2\tau}}}{1+e^{-\frac{T}{2\tau}}}\]
-\[\text{e} \quad T \quad\text{è il periodo dell'onda qadra}\]
-
-Cio ci permette allora di fare delle considerazioni, a priori, di come si dovrebbe comportare il circuito reale
+\[ \quad T \quad\text{è il periodo dell'onda quadra del generatore.}\]
+\[ \tau = RC\] 
+A seconda della relazione che sussiste tra \(\tau\) e \(T\) è possibile distinguere i seguenti andamenti teorici del circuito:
 \begin{itemize}[leftmargin=2cm]
-    \item Per un tempo caratteristico sufficentemente minore del periodo dell'onda quadra, ci aspettiamo che il condensatore riesca a caricarsi completamente
-    \item Se il tempo caratteristico è equiparabile al periodo il condensatore ci si aspetta che non abbia il tempo di caricarsi
-    \item Mentre se il periodo risulta notevolmente superiore il condensatore non dovrebbe essere in grado di seguire le oscillazioni
+    \item Con \(\tau << T\) : il condensatore riesce a caricarsi completamente \(\implies V_*\sim V_0\)
+    \item Con  \(\tau \sim T\) : il condensatore non riesce a caricarsi completamente \(\implies V_*< V_0\)
+    \item Con \(\tau >> T\) : il condensatore non riesce a seguire la sollecitazione \(\implies V_*\sim 0\)
 \end{itemize}
 \subsection{\textbf{Misure acquisite}}
 Siamo andati a verificare, acquisendo attraverso l'oscilloscopio i dati, come i grafici voltaggio tempo variassero
