@@ -99,13 +99,12 @@
 
 \section{Introduzione}
 L'obiettivo dell'esperienza è quello di andare a studiare il comportamento dei circuiti notevoli RC e RLC serie in regime impulsivo.
-
+Si utilizza un onda quadra di  simmetrica con .
 
 \section{Apparato sperimentale}
 \begin{itemize}[leftmargin=2cm]
     \item Generatore arbitrario di funzioni.
-    \item Oscilloscopio Teledyne Lecroy HDO 6104B [CONTROLLARE]
-    \item RCL meter.
+    \item Oscilloscopio Teledyne Lecroy HDO 6104B
     \item Due blocchi di impedenze per il circuito RC, con valori misurati:
     \begin{itemize}[leftmargin=1cm]
         \item Resistenza da \(R = \qty{100.3(0.35)}{\ohm} \) [MODIFICARE]
@@ -177,24 +176,58 @@ Pure in questo caso abbiamo analizzato il comportamento al variare della relazio
 Questi grafici sono quello che ci saremmo aspettati dalle considerazioni ideali.
 \section{Circuito RLC}
 \subsection{Introduzione}
-In questo circuito dalla risoluzione dell'equazione differenziale abbiamo due possibili funzioni che esprimono la tensione
-agli estremi della capacità, a seconda del fattore di Merito. Se: 
-\[Q=\frac{\omega_0}{\Gamma}= \frac{1}{R}\sqrt{\frac{L}{C}}>\frac{1}{2}
+In questo circuito, dalla risoluzione dell'equazione differenziale derivante dalle legge di Kirchoff, abbiamo due possibili funzioni che esprimono la tensione
+agli estremi della capacità, a seconda del fattore di Merito. 
+
+Se: \[Q=\frac{\omega_0}{\Gamma}= \frac{1}{R}\sqrt{\frac{L}{C}}>\frac{1}{2}
 \quad \Rightarrow \quad V_c(t)=V_0[1-e^{-\frac{\Gamma}{2}t}(\cos{(\omega^*t)}+\frac{\Gamma}{2\omega^*}\sin{(\omega^*t)})] \]
-Ovvero siamo nel caso in cui si comporta come l'oscillatore sottosmorzato, dove all'aumentare del fattore di merito le oscillazioni risultano più ampie con uno smorzamento pià lento.
+\[\text{(Non si esplicita la seconda relazione poiché non ci riguarda)}\]
+dove:
+\[\omega_0=\frac{1}{\sqrt{LC}}\]
+\[\Gamma=\frac{R}{L}\]
+\[\omega^*=\omega_0 \sqrt{1-\frac{1}{4Q^2}}\]
+Ovvero siamo nel caso in cui la tensione ai capi del condensatore si comporta come l'oscillatore armonico sottosmorzato, dove all'aumentare del fattore di merito le oscillazioni risultano più ampie con uno smorzamento pià lento.
 
 \subsection{\textbf{Misure acquisite}}
-Nel nostro caso il fattore di merito ideale risulta:
+Con i dati del circuito da noi costruito il fattore di merito ideale risulta:
 \[Q=5 [VALOre A CASO] \]
 
-Di conseguenza andiamo a verificare se il comportamenteo del circuito è come aspettato. 
+Di conseguenza andiamo a verificare se il comportamenteo del circuito è come aspettato. Per fare ciò prendiamo un periodo dell'onda quadra opportuno ad osservare l'influenza del transiente (\(T\sim\frac{10}{\Gamma}\))
 
 [GRAFICOOOOO] 
 
-Adesso da questo Grafico è possibile ricavare le seguenti stime effettive
+Adesso da questo Grafico è possibile ricavare le seguenti stime effettive:
+\begin{itemize}[leftmargin=2cm]
+    \item Una prima stima di Q dalla formula: \(\frac{V_{c_\text{max}}}{V_0}=1+2e^{-\frac{\pi}{\sqrt{4Q^2-1}}}\)
+    \item Una stima di \(\omega^*\) dallo pseudo periodo: \(\omega^*=n\frac{2\pi}{\Delta T^*}\)
+    \item Una stima di \(\Gamma\), infatti i massimi relativi seguono una relazione da lei dipendente, ma passando in scala semilogaritmica \(\Gamma\) risulta il coeff angolare del fit lineare.
+\end{itemize}
+I punti del grafico notevoli per le nostre formule risultano i seguenti (ricavati con la modalità cursore dell'oscilloscopio):
 
+[TABELLA BELLA]
+
+Mentre è possibile ricavare anche una seconda stima di Q passando in imput al circuito un'onda sinusoidale.
+Infatti l'amplificazione del condensatore risulta dalla formula: 
+\[A_c=\frac{Q\frac{\omega_0}{\omega}}{\sqrt{1+Q^2(\frac{\omega}{\omega_0}-\frac{\omega_0}{\omega})^2}}\] 
+Perciò se: \[\omega \approx \omega_0 \implies A_c \approx Q \implies Q\approx \frac{V_c}{V_0}\]
+Allora troviamo la frequenza di risonanza con la visualizzazione x-y per poter poi misurare i voltaggi. 
+
+[METTERE TABELLA]
 \subsection{\textbf{Analisi dati}}
+Alla luce dei dati acquisiti, in seguito siamo in grado di rappresentare il fit e di trascrivere le seguenti stime effettive:
 
+[Mettere FIT]
+\begin{itemize}[leftmargin=2cm]
+    \item \(\Gamma\)=
+    \item \(\omega^*\)= 
+    \item \(Q_1=\)
+    \item \(Q_2=\)
+\end{itemize}
+Verifichiamo infine se aspettative ideali ed effettive coincidono:
+
+[CONSISTENZE]
+[CONSISTENZE]
+[CONSISTENZE]
 %\renewcommand{\thesection}{}
 %\renewcommand{\thesubsection}{\arabic{subsection})}
 \section{Conclusioni} %Conclusioni
