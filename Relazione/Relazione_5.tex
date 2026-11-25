@@ -39,7 +39,7 @@
     \par\end{center} 
     \vspace{0.5em}   
     \begin{center}
-        \textit{\textbf{\Large Stima di una resistenza con metodo il Volt-Amperometrico}} %TITOLO
+        \textit{\textbf{\Large Studio in regime impulsivo di circuiti RC e RLC}} %TITOLO
     \end{center}
     \vspace{0.5cm} 
 }
@@ -73,9 +73,9 @@
 }
 \DeclareSIUnit\cal{cal}
 
-\renewcommand{\thesection}{\arabic{section})}
-\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection})}
-\renewcommand{\thesubsubsection}{\arabic{subsubsection})}
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\arabic{subsubsection}}
 \renewcommand{\theHsection}{\arabic{section}}
 \renewcommand{\theHsubsection}{\arabic{section}.\arabic{subsection}}
 \renewcommand{\theHsubsubsection}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
@@ -98,25 +98,107 @@
 %\bigskip
 
 \section{Introduzione}
-
+L'obiettivo dell'esperienza è quello di andare a studiare il comportamento di questi due circuiti notevoli nel 
+momento in cui ricevono in ingresso un voltaggio impulsivo. Simuleremo allora attraverso un onda quadra un impulso periodico.
 \section{Apparato sperimentale}
 \begin{itemize}[leftmargin=2cm]
-    \item 
+    \item Generatore arbitrario di funzioni.
+    \item Oscilloscopio Teledyne Lecroy HDO 6104B [CONTROLLARE]
+    \item RCL meter.
+    \item Due blocchi di impedenze per il circuito RC, con valori misurati:
+    \begin{itemize}[leftmargin=1cm]
+        \item Resistenza da \(R = \qty{100.3(0.35)}{\ohm} \) [MODIFICARE]
+        \item Condensatore da \(C = \qty{219.0(0.6)}{\nano\farad} \) [MODIFICARE]
+    \end{itemize}
+    \item Tre blocchi di impedenze per il circuito RCL, con valori misurati:
+    \begin{itemize}[leftmargin=1cm]
+        \item Resistenza da \(R = \qty{100.3(0.35)}{\ohm} \) [MODIFICARE]
+        \item Induttanza da \(L = \qty{9.891(0.025)}{\milli\henry} \) [MODIFICARE]
+        \item Condensatore da \(C = \qty{219.0(0.6)}{\nano\farad} \) [MODIFICARE]
+    \end{itemize}
+    \item Basetta e cavi:
+    \begin{itemize}[leftmargin=1cm]
+        \item Cavo BNC-BNC.
+        \item Cavi BNC-Coccodrilli.
+    \end{itemize}
 \end{itemize}
 
 
-\section{Esperimento}
+\section{Circuito RC}
 \subsection{Introduzione}
+Anche in questo caso la risoluzione analitica dell'equazione differenziale del circuito, con le adeguate condizioni iniziali, permette 
+di descriverlo completamente.
 
+Nel nostro caso otterremo una tensione ai capi del condensatore dipendente dalla funzione:
+
+ 
+\[V_c(t)=
+\begin{cases}
+-V_0+[(V_0+V^*)e^{-\frac{t}{\tau}}] \quad se \: 0\leq t<\frac{T}{2}\\
++V_0-[(V_0+V^*)e^{-\frac{t-\frac{T}{2}}{\tau}}] \quad se \; \frac{T}{2}\leq t<T
+\end{cases}
+\]
+
+Dove: \[ V^*= V_0 \frac{1-e^{-\frac{T}{2\tau}}}{1+e^{-\frac{T}{2\tau}}}\]
+\[\text{e} \quad T \quad\text{è il periodo dell'onda qadra}\]
+
+Cio ci permette allora di fare delle considerazioni, a priori, di come si dovrebbe comportare il circuito reale
+\begin{itemize}[leftmargin=2cm]
+    \item Per un tempo caratteristico sufficentemente minore del periodo dell'onda quadra, ci aspettiamo che il condensatore riesca a caricarsi completamente
+    \item Se il tempo caratteristico è equiparabile al periodo il condensatore ci si aspetta che non abbia il tempo di caricarsi
+    \item Mentre se il periodo risulta notevolmente superiore il condensatore non dovrebbe essere in grado di seguire le oscillazioni
+\end{itemize}
+\subsection{\textbf{Misure acquisite}}
+Siamo andati a verificare, acquisendo attraverso l'oscilloscopio i dati, come i grafici voltaggio tempo variassero
+ a seconda della relazione tra il tempo caratteristico e il periodo dell'onda quadra. In seguito i grafici:
+
+ [GRAFICI (mettere nella descrizione la condizione)]
+
+Per il primo caso è possibile avere una stima rapida del tempo caratteristico, attraverso una legge che
+ collega due punti consegutivi con la formula:
+
+\[\tau= \frac{t_2-t_1}{\log{\frac{V_0-V_1}{V_0-V_2}}}\]
+
+di seguito i dati acquisiti e il fit:
+
+[TABELLA E FIT]
+
+Per il secondo caso invece andiamo a verificare il seguente accordo teorico
+, sia per l'onda quadra, sia per un'onda triangolare:
+
+\[V_{output}=\frac{1}{\tau} \int V_{imput}(t) \, dt
+\]
+
+[CAPIRE COSA METTERE]
+
+Infine si è deciso di analizzare il comportamento della tensione anche ai capi della reisistenza.
+Pure in questo caso abbiamo analizzato il comportamento al variare della relazione tra il tempo caratteristico e il periodo dell'onda.
+
+ [GRAFICI (mettere nella descrizione la condizione)]
+
+Questi grafici sono quello che ci saremmo aspettati dalle considerazioni ideali.
+\section{Circuito RLC}
+\subsection{Introduzione}
+In questo circuito dalla risoluzione dell'equazione differenziale abbiamo due possibili funzioni che esprimono la tensione
+agli estremi della capacità, a seconda del fattore di Merito. Se: 
+\[Q=\frac{\omega_0}{\Gamma}= \frac{1}{R}\sqrt{\frac{L}{C}}>\frac{1}{2}
+\quad \Rightarrow \quad V_c(t)=V_0[1-e^{-\frac{\Gamma}{2}t}(\cos{(\omega^*t)}+\frac{\Gamma}{2\omega^*}\sin{(\omega^*t)})] \]
+Ovvero siamo nel caso in cui si comporta come l'oscillatore sottosmorzato, dove all'aumentare del fattore di merito le oscillazioni risultano più ampie con uno smorzamento pià lento.
 
 \subsection{\textbf{Misure acquisite}}
+Nel nostro caso il fattore di merito ideale risulta:
+\[Q=5 [VALOre A CASO] \]
 
+Di conseguenza andiamo a verificare se il comportamenteo del circuito è come aspettato. 
+
+[GRAFICOOOOO] 
+
+Adesso da questo Grafico è possibile ricavare le seguenti stime effettive
 
 \subsection{\textbf{Analisi dati}}
-
 
 %\renewcommand{\thesection}{}
 %\renewcommand{\thesubsection}{\arabic{subsection})}
 \section{Conclusioni} %Conclusioni
-
+[DA FARE PER FORZA DOPO LAB]
 \end{document}
