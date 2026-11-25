@@ -183,16 +183,16 @@ Per le incertezze sulle tensioni si è considerato lo \(0,5 \% \) del valore di 
 
 \begin{table}[H]
 \centering
-\begin{tabular}{@{}llll@{}}
+\begin{tabular}{@{}lll@{}}
 \toprule
-\(t(\mu s)\)    & \(\Delta t(\mu s)\) & \(V_c(V)\)  & \(\Delta V_c(V)\) \\ \midrule
-1,1127  & 0     & -0,801 & 0,01   \\
-2,8378  & 0     & -0,489 & 0,01   \\
-5,3636  & 0     & -0,13  & 0,01   \\
-9,5959  & 0     & 0,285  & 0,01   \\
-14,1402 & 0     & 0,561  & 0,01   \\
-18,5309 & 0     & 0,725  & 0,01   \\
-21,5784 & 0     & 0,799  & 0,01   \\ \bottomrule
+\(t(\mu s)\)  & \(V_c(V)\)  & \(\delta V_c(V)\) \\ \midrule
+1,1127   & -0,801 & 0,01   \\
+2,8378   & -0,489 & 0,01   \\
+5,3636   & -0,13  & 0,01   \\
+9,5959   & 0,285  & 0,01   \\
+14,1402  & 0,561  & 0,01   \\
+18,5309  & 0,725  & 0,01   \\
+21,5784  & 0,799  & 0,01   \\ \bottomrule
 \end{tabular}
 \end{table}
 
@@ -212,10 +212,6 @@ Per le incertezze sulle tensioni si è considerato lo \(0,5 \% \) del valore di 
 \end{figure}
 
 
-
-
-
-
 Dal fit si ricava la seguente stima di \(\tau\):
 
 \[\tau_\text{fit} = \qty{9.32(0.03)}{\micro\second}\]
@@ -225,7 +221,7 @@ Il valore di \(\tau_\text{fit}\) è stato confrontato con quello di \(\tau_\text
 consistenza statistica ha dato esito negativo, con una discrepanza di oltre \(3 \sigma\) .
 \[ \tau = \qty{8.83(3)}{\micro\second}\] 
 
-
+\E infine da notare che i residui normalizzati del fit (\cref{fig:residui_rc}) hanno chiaramente un andamento non stocastico.
 
 Analizzando il caso in cui \(\tau >> T\) è possibile verificare l'andamento teorico di un "filtro integratore";
 con \(V_C<< V_\text{input}\) si ottiene idealmente:
@@ -240,10 +236,10 @@ Nel caso dell'onda quadra abbiamo ottenuto i seguenti punti sperimentali:
 
 \begin{table}[H]
 \centering
-\begin{tabular}{@{}llllll@{}}
+\begin{tabular}{@{}lllll@{}}
 \toprule
-\(t_1(\mu s)\)    & \(t_2(\mu s)\)  & \(\delta t(\mu s)\) & \(V_{c1}(V)\) & \(V_{c2}(V)\) & \(\delta V_c(V)\) \\ \midrule
-4.94697 & 4.99815 & 0             & 0.044  & 0.097  & 0.01        \\ \bottomrule
+\(t_1(\mu s)\)    & \(t_2(\mu s)\) & \(V_{c1}(V)\) & \(V_{c2}(V)\) & \(\delta V_c(V)\) \\ \midrule
+4.94697 & 4.99815  & 0.044  & 0.097  & 0.01        \\ \bottomrule
 \end{tabular}
 \end{table}
 
@@ -259,8 +255,8 @@ Il procedimento analogo è stato eseguito nel caso dell'onda triangolare, da cui
 \centering
 \begin{tabular}{@{}llllll@{}}
 \toprule
-\(t_1(\mu s)\) & \(t_2(\mu s)\) & \(\delta t(\mu s)\) & \(V_{c1}(V)\) & \(V_{c2}(V)\) & \(\delta V_c(V)\) \\ \midrule
-49.1483  & 50.0165  & 0        & 0.023  & 0.058  & 0.01   \\ \bottomrule
+\(t_1(\mu s)\) & \(t_2(\mu s)\) & \(V_{c1}(V)\) & \(V_{c2}(V)\) & \(\delta V_c(V)\) \\ \midrule
+49.1483  & 50.0165  & 0.023  & 0.058  & 0.01   \\ \bottomrule
 \end{tabular}
 \end{table}
 
@@ -367,63 +363,65 @@ Misurando il periodo delle oscillazioni della tensione, ricaviamo:
 
 
 
-E' possibile inoltre ricavare anche una seconda stima di Q passando in input al circuito un'onda sinusoidale.
-Infatti l'amplificazione del condensatore risulta dalla formula: 
+\E possibile inoltre ricavare anche una seconda stima di Q passando in input al circuito un'onda sinusoidale.
+Infatti l'attenuazione del condensatore si ottiene dalla formula: 
 \[A_c=\frac{Q\frac{\omega_0}{\omega}}{\sqrt{1+Q^2(\frac{\omega}{\omega_0}-\frac{\omega_0}{\omega})^2}}\] 
 Perciò se: \[\omega \approx \omega_0 \implies A_c \approx Q \implies Q\approx \frac{V_c}{V_0}\]
-Allora troviamo la frequenza di risonanza con la visualizzazione x-y per poter poi misurare i voltaggi. 
+Si è proceduto trovando la frequenza di risonanza utilizzando la visualizzazione x-y dell'oscilloscopio. In questa
+condizione sono stati poi misurati i valori dei voltaggi. 
 
 \begin{table}[H]
 \centering
 \begin{tabular}{@{}llllll@{}}
 \toprule
-\(\omega_0(\frac{rad}{s})\)  & \(\delta \omega_0(\frac{rad}{s})\)  & \(V_c(V)\) & \(\Delta V_c(V)\) & \(V_0(V)\) & \(\Delta V_0(V)\) \\ \midrule
+\(\omega_0(\frac{rad}{s})\)  & \(\delta \omega_0(\frac{rad}{s})\)  & \(V_c(V)\) & \(\delta V_c(V)\) & \(V_0(V)\) & \(\delta V_0(V)\) \\ \midrule
 \((9,7263)10^4\) & 62 & 3,05   & 0,02    & 0,84  & 0,02    \\ \bottomrule
 \end{tabular}
 \end{table}
 
+\[Q_2=\qty{3.60(0.08)}{}\]
 
 
-\E da notare per i seguenti dati che non sono stati considerati esclusivamente i massimi relativi delle oscillazioni su C ma, sia i massimi che i minimi, trasformandoli secondo
-la formula \(V_i = \left\lvert V_0 - V_\text{staz}\right\rvert\) (dove \(V_\text{staz}\) indica il voltaggio del punto stazionario).
+Si è proceduto poi prendendo i punti sperimentali che consentono di realizzare il fit lineare per ottenere la stima di \(\Gamma\).
+\E da notare che per i seguenti dati non sono stati considerati esclusivamente i massimi relativi delle oscillazioni su \(V_c\) ma, sia i massimi che i minimi, trasformandoli secondo
+la formula \(V_i = \left\lvert V_0 - V_\text{staz}\right\rvert\) (dove \(V_\text{staz}\) indica il voltaggio del punto stazionario). Gli errori sui tempi sono 
+stati nuovamente ritenuti trascurabili.
 
 \begin{table}[H]
 \centering
-\begin{tabular}{@{}llll@{}}
+\begin{tabular}{@{}lll@{}}
 \toprule
-\(t(\mu s)\)      & \(\Delta t(\mu s)\) & \(V_c(V)\) & \(\Delta V_c(V)\) \\ \midrule
-32.1256  & 0      & 2.17  & 0.02   \\
-64.5798  & 0      & 0.31  & 0.02   \\
-96.4552  & 0      & 1.43  & 0.02   \\
-130.1158 & 0      & 0.76  & 0.02   \\
-161.4840 & 0      & 1.16  & 0.02   \\
-193.0000 & 0      & 0.92  & 0.02   \\ \bottomrule
+\(t(\mu s)\)  & \(V_c(V)\) & \(\delta V_c(V)\) \\ \midrule
+32.1256   & 2.17  & 0.02   \\
+64.5798   & 0.31  & 0.02   \\
+96.4552   & 1.43  & 0.02   \\
+130.1158  & 0.76  & 0.02   \\
+161.4840  & 1.16  & 0.02   \\
+193.0000  & 0.92  & 0.02   \\ \bottomrule
 \end{tabular}
 \end{table}
 
-Alla luce dei dati acquisiti, in seguito siamo in grado di rappresentare il fit e di trascrivere le seguenti stime effettive:
+Passando ai logaritmi i valori di \(V_i\), è stato realizzato il seguente fit lineare, è evidente che gli errori aumentano
+considerevolmente all'aumentare del tempo, questo è un effetto del passaggio alla scala semilogaritmica:
 
 \begin{figure}[H]
     \centering
     \caption{Fit RLC semilog}
-    \includegraphics[width=0.6\textwidth]{fit_rlc.png}
+    \includegraphics[width=0.8\textwidth]{fit_rlc.png}
     \label{fig:fit_rlc}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \caption{Residui fit RLC}
-    \includegraphics[width=0.6\textwidth]{residui_rlc.png}
+    \includegraphics[width=0.8\textwidth]{residui_rlc.png}
     \label{fig:residui_rlc}
 \end{figure}
 
+\[\Gamma = (\num{3.175e-2} \pm \num{3.291e-4})\,\unit{\per\micro\second}\]
 
 
-\begin{itemize}[leftmargin=2cm]
-    \item \(\omega^*=\qty{96(0.3)}{\frac{rad}{s}} \cdot 10^3 \)
-    \item \(Q_1=\qty{3.028(0.002)}{}\)
-    \item \(Q_2=\qty{3.60(0.08)}{}\)
-\end{itemize}
+
 
 %\renewcommand{\thesection}{}
 %\renewcommand{\thesubsection}{\arabic{subsection})}
@@ -443,10 +441,17 @@ dei parametri notevoli del circuito:
 \[\omega^*=\qty{96(0.3)}{\frac{rad}{s}} \cdot 10^3 \]
 \[Q_1=\qty{3.028(0.002)}{}\]
 \[Q_2=\qty{3.60(0.08)}{}\]
+\[\Gamma = (\num{3.175e-2} \pm \num{3.291e-4})\,\unit{\per\micro\second}\]
 
-\E infine da notare che i residui normalizzati del fit RC (\cref{fig:residui_rc}) hanno chiaramente un andamento non stocastico.
+
+Le seguenti stime sperimentali sono state confrontate con quelle ideali, ricavate dai valori delle impedenze
+del circuito:
+\[Q_\text{ideale}=\qty{4.295(0.014)}{} \]
+\[\omega^*_\text{ideale}=\qty{92(0.17)}{\frac{rad}{s}} \cdot 10^3 \]
+\[\Gamma_\text{ideale}=\qty{22.24(0.08)}{\kilo\frac{\ohm}{\henry}} = (\num{2.2244e-2} \pm \num{8.3281e-5})\,\unit{\per\micro\second}\]
 
 
+Nessuno dei valori notevoli ricavati sperimentalmente nel circuito RLC è risultato consistente con la sua stima ideale.
 
 
 
